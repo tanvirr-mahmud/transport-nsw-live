@@ -44,7 +44,7 @@ function App() {
 
   return (
     <FilterProvider>
-      <Router>
+      <Router basename="/transport-nsw-live">
         <Routes>
           <Route element={<SplitLayout />}>
             <Route path="/" element={<Home />} />
