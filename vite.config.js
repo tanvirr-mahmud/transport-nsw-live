@@ -11,7 +11,6 @@ export default defineConfig(({ mode }) => {
   const vehiclePosKey = env.VITE_TFNSW_VEHICLE_POS_API_KEY || gtfsKey;
 
   return {
-    base: '/transport-nsw-live/',
     plugins: [
       react(),
       nodePolyfills({

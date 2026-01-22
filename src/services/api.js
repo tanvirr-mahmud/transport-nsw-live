@@ -1,7 +1,7 @@
 import GtfsRealtimeBindings from 'gtfs-realtime-bindings';
 
-const BASE_URL = import.meta.env.DEV ? '/api/v1/tp' : 'https://api.transport.nsw.gov.au/v1/tp';
-const GTFS_BASE_URL = import.meta.env.DEV ? '/api/v1/gtfs' : 'https://api.transport.nsw.gov.au/v1/gtfs';
+const BASE_URL = '/api/v1/tp';
+const GTFS_BASE_URL = '/api/v1/gtfs';
 
 const getApiKey = (scope = 'tp') => {
   const apiKey = import.meta.env.VITE_TFNSW_API_KEY;
