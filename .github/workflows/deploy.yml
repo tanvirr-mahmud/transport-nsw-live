@@ -27,6 +27,11 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_TFNSW_API_KEY: ${{ secrets.VITE_TFNSW_API_KEY }}
+          VITE_TFNSW_VEHICLE_POS_API_KEY: ${{ secrets.VITE_TFNSW_VEHICLE_POS_API_KEY }}
+          VITE_TFNSW_TRIP_UPDATES_API_KEY: ${{ secrets.VITE_TFNSW_TRIP_UPDATES_API_KEY }}
+          VITE_OPENWEATHER_API_KEY: ${{ secrets.VITE_OPENWEATHER_API_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

@@ -1,6 +1,7 @@
 import GtfsRealtimeBindings from 'gtfs-realtime-bindings';
 
-const BASE_URL = '/api/v1/tp';
+const BASE_URL = import.meta.env.DEV ? '/api/v1/tp' : 'https://api.transport.nsw.gov.au/v1/tp';
+const GTFS_BASE_URL = import.meta.env.DEV ? '/api/v1/gtfs' : 'https://api.transport.nsw.gov.au/v1/gtfs';
 
 const getApiKey = (scope = 'tp') => {
   const apiKey = import.meta.env.VITE_TFNSW_API_KEY;
@@ -154,8 +155,8 @@ export const getVehiclePositions = async (transportMode = 'bus') => {
   }
 
   try {
-    // Vehicle Position API endpoint via proxy: /api/v1/gtfs/vehiclepos/{mode}
-    const response = await fetch(`/api/v1/gtfs/vehiclepos/${endpointMode}`, {
+    // Vehicle Position API endpoint: /v1/gtfs/vehiclepos/{mode}
+    const response = await fetch(`${GTFS_BASE_URL}/vehiclepos/${endpointMode}`, {
       headers: {
         'Authorization': `apikey ${apiKey}`
       }
@@ -213,8 +214,8 @@ export const getTripUpdates = async (transportMode = 'train') => {
   }
 
   try {
-    // Trip Updates API endpoint via proxy: /api/v1/gtfs/realtime/{mode}
-    const response = await fetch(`/api/v1/gtfs/realtime/${endpointMode}`, {
+    // Trip Updates API endpoint: /v1/gtfs/realtime/{mode}
+    const response = await fetch(`${GTFS_BASE_URL}/realtime/${endpointMode}`, {
       headers: {
         'Authorization': `apikey ${apiKey}`
       }
