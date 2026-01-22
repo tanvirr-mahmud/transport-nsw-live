@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => {
   const vehiclePosKey = env.VITE_TFNSW_VEHICLE_POS_API_KEY || gtfsKey;
 
   return {
+    base: '/transport-nsw-live/',
     plugins: [
       react(),
       nodePolyfills({
@@ -35,7 +36,7 @@ export default defineConfig(({ mode }) => {
 
               const url = req.url || '';
               let keyToUse = apiKey;
-              
+
               if (url.includes('/v1/gtfs/realtime')) {
                 // Trip Updates API
                 keyToUse = tripUpdatesKey;
@@ -46,7 +47,7 @@ export default defineConfig(({ mode }) => {
                 // Other GTFS endpoints
                 keyToUse = gtfsKey;
               }
-              
+
               if (keyToUse) {
                 proxyReq.setHeader('Authorization', `apikey ${keyToUse}`);
               }
